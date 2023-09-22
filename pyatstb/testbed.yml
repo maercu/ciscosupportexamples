@@ -1,0 +1,16 @@
+devices:
+    WANRTR01:
+        os: iosxe
+        platform: cat8k
+        credentials:
+            default:
+                username: user1
+                password: xx
+            enable:
+                password: xx
+        connections:
+            cli:
+                protocol: ssh
+                ip: 192.168.4.5
+        custom:
+            wan_intf: Te0/0/4

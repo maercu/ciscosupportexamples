@@ -1,0 +1,22 @@
+devices:
+{% for device in devices %}
+    {{ device.hostname }}:
+        os: {{ device.os }}
+        platform: {{ device.platform }}
+        credentials:
+            default:
+                username: {{ device.username }}
+                password: {{ device.password }}
+            enable:
+                password: {{ device.enable_password }}
+        connections:
+            cli:
+                protocol: {{ device.protocol }}
+                ip: {{ device.ip }}
+        custom:
+        {% for cst in device.custom %}
+            {% for k,v in cst.items() %}
+            {{ k }}: {{ v }}
+            {% endfor %}
+        {% endfor %}
+{% endfor %}

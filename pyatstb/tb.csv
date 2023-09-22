@@ -1,0 +1,2 @@
+hostname,ip,username,password,protocol,os,enable_password,platform,wan_intf
+WANRTR01,192.168.4.5,user1,xx,ssh,iosxe,xx,cat8k,Te0/0/4
