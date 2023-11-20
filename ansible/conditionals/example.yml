@@ -1,5 +1,5 @@
 - name: Conditional
-  hosts: ccsnbe01crs01.net.ccsn.ch
+  hosts: xyz
   gather_facts: false
   tasks:
   
