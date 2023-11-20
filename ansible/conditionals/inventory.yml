@@ -1,0 +1,9 @@
+all:
+  hosts:
+    xyz
+  vars:
+    ansible_connection: ansible.netcommon.network_cli
+    ansible_network_os: cisco.ios.ios  
+    ansible_user: "{{ lookup('ansible.builtin.env', 'NET_USER') }}"
+    ansible_password: "{{ lookup('ansible.builtin.env', 'NET_PASS') }}"
+

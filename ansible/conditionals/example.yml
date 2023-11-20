@@ -1,0 +1,15 @@
+- name: Conditional
+  hosts: ccsnbe01crs01.net.ccsn.ch
+  gather_facts: false
+  tasks:
+  
+    - name: show ip route and bfd neighbors prior to changes
+      cisco.ios.ios_command:
+        commands:
+          - sh run | sec ospf
+      register: output1
+    
+    - name: Debug
+      ansible.builtin.debug:
+        var: output1.stdout_lines
+      when: output1.stdout is search("\\sarea 3080 nssa default-information-originate")
