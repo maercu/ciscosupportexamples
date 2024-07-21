@@ -107,7 +107,7 @@ If we run the same Python script again (loading the modified XML data), we'll en
 }
 ```
 
-Can you spot the difference? Have a look at the data type of the interface value (parsed_xml["data"]["interfaces"]["interface"]): If there are multiple interfaces, like in our first example, xmltodict puts all interfaces in a list, if there is just one, the resulting value is a dict.
+Do you spot the difference? Have a look at the data type of the interface value (parsed_xml["data"]["interfaces"]["interface"]): If there are multiple interfaces, like in our first example, xmltodict puts all interfaces in a list, if there is just one, the resulting value is a dict.
 
 ![Diff](out_diff.png)
 
@@ -155,10 +155,47 @@ for itr in root.iter():
 
 Notice, the tags use a special format: _{namespace}tag_. 
 
-To find interesting elements, we can search fol all interface-tags using the findall-method. findall returns only elements which are a direct child of the 
+To find interesting elements, we can search fol all interface-tags using the _findall-method_. _findall_ returns only elements with a tag which are a direct children of the current element. If the interesting elements are located further down the tree, we use a xPath expression to search for the elements. In our case the _interface_ tags are located under _data/interfaces/interface_ which translates to _.//interface_ using xPath. To find the elements we also need to put the namespace into our xPath expression: _.//{http://cisco.com/ns/yang/Cisco-IOS-XE-interfaces-oper}interface_
+
 ```python
-for itr in root.iter():
-    print(itr.tag)
+for intf in root.findall(".//{http://cisco.com/ns/yang/Cisco-IOS-XE-interfaces-oper}interface"):
+    print(intf.tag)
 ```
 
+```bash
+> python parse_xml.py 
+{http://cisco.com/ns/yang/Cisco-IOS-XE-interfaces-oper}interface
+{http://cisco.com/ns/yang/Cisco-IOS-XE-interfaces-oper}interface
+{http://cisco.com/ns/yang/Cisco-IOS-XE-interfaces-oper}interface
+```
 
+To print the name and oper-status of the interfaces we use the _find-method_ and print the content using _.text_:
+```python
+for intf in root.findall(".//{http://cisco.com/ns/yang/Cisco-IOS-XE-interfaces-oper}interface"):
+    print(intf.find("{http://cisco.com/ns/yang/Cisco-IOS-XE-interfaces-oper}name").text)
+    print(intf.find("{http://cisco.com/ns/yang/Cisco-IOS-XE-interfaces-oper}oper-status").text)
+```
+
+```bash
+> python parse_xml.py 
+GigabitEthernet1
+if-oper-state-ready
+
+GigabitEthernet2
+if-oper-state-no-pass
+
+GigabitEthernet3
+if-oper-state-no-pass
+```
+
+To cleanup things instead of using the special _{namespace}tag_ format, we usually use a namespace dict:
+```python
+ns = {"ios_intf_oper":"http://cisco.com/ns/yang/Cisco-IOS-XE-interfaces-oper"}
+
+for intf in root.findall(".//ios_intf_oper:interface", ns):
+    print(intf.find("ios_intf_oper:name", ns).text)
+    print(intf.find("ios_intf_oper:oper-status", ns).text)
+    print()
+```
+
+This was a very quick intro in the XML ElementTree API, for more information check out the tutorial/doc at [ET Doc/Tutorial](https://docs.python.org/3/library/xml.etree.elementtree.html)

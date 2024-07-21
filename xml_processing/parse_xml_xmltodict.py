@@ -2,7 +2,7 @@ import xmltodict
 import json
 
 # Read XML content from file
-with open("xml_output_2.xml", "r") as fo:
+with open("xml_output.xml", "r") as fo:
     xml = fo.read()
 
 # parse it using xmltodict
