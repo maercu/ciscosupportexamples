@@ -111,7 +111,7 @@ Do you spot the difference? Have a look at the data type of the interface value 
 
 ![Diff](out_diff.png)
 
-Such behaviour may brake our scripts - For example this would work in the first case, but would fail with an AttributeError in the second case:
+Such behaviour may break our scripts - For example this would work in the first case, but would fail with an AttributeError in the second case:
 
 ```python
 # print interface name and oper state for all interfaces
