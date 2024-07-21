@@ -1,5 +1,5 @@
 # XML in Python - Don't be lazy
-Catching up on the great post from my buddy with the impressive beard. This is a very short article on why we should use native XML modules to parse XML data in Python - it's kind of a "in a nutshell" post, I'm planning to write a more detailed post on working with XML in Python in the near future. 
+I'm referring to the great post by my buddy with the impressive beard. This is a very short article on why we should use native XML modules to parse XML data in Python - it's kind of a "in a nutshell" post, I'm planning to write a more detailed post on working with XML in Python in the near future. 
 
 # XML!? Just convert it into JSON
 If you're lazy (like me), you'll probably think "okay I understand this XML-thing...however, there must be a way to just translate this into a dict/JSON". And for sure there is: xmltodict (https://github.com/martinblech/xmltodict) is a module often used by Network Engineers to parse XML (NETCONF) data.
