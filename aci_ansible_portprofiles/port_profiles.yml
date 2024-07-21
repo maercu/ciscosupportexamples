@@ -1,0 +1,15 @@
+profiles:
+  - epgs: 
+      - uni/tn-xzy/ap-x/epg-foo
+      - uni/tn-xzy/ap-x/epg-bar
+    paths:
+      - topology/pod-1/protpaths-1101-1102/pathep-[VPC-XYY]]
+      - topology/pod-1/protpath-1101/pathep-[eth1/8]]
+
+  # profile2
+  - epgs: 
+      - uni/tn-xzy/ap-x/epg-foo
+    paths:
+      - topology/pod-1/protpath-1105/pathep-[eth1/10]]
+
+  # etc.

@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
+        <interfaces xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-interfaces-oper">
+                <interface>
+                        <name>GigabitEthernet1</name>
+                        <oper-status>if-oper-state-ready</oper-status>
+                </interface>
+                <interface>
+                        <name>GigabitEthernet2</name>
+                        <oper-status>if-oper-state-no-pass</oper-status>
+                </interface>
+                <interface>
+                        <name>GigabitEthernet3</name>
+                        <oper-status>if-oper-state-no-pass</oper-status>
+                </interface>
+        </interfaces>
+</data>

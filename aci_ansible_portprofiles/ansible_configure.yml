@@ -1,0 +1,17 @@
+- name: configure "port profiles"
+  hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: load port_profiles
+      ansible.builtin.include_vars:
+        file: port_profiles.yml
+
+    - name: Flatten data
+      set_fact:
+        flattened_data: "{{ profiles | json_query('[].{epgs: epgs[], paths: paths[]}') }}"
+
+    - name: Loop over flattened data
+      debug:
+        var: item
+      loop: "{{ 'ansible.builtin.together'(flattened_data| json_query('[].epgs[]'), flattened_data| json_query('[].paths[]')) }}"
