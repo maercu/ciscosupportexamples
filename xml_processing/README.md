@@ -75,7 +75,7 @@ Running the above script results in this:
 As expected our XML data was successfully converted into a dict and we can now consume the data in a easy way.
 
 # So far, so good - What's the problem?
-When converting XML into a dict, the resulting data may be inconsitent depending on the structure of the content being parsed. Do demonstrate this, I slightly change the XML data: Let's assume we query another router and get the follwing result (1 instead of 3 interfaces).
+When converting XML into a dict, the resulting data may be inconsistent depending on the structure of the content being parsed. Do demonstrate this, I slightly change the XML data: Let's assume we query another router and get the follwing result (1 instead of 3 interfaces).
 
 ```xml
 <data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
