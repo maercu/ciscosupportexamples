@@ -174,6 +174,7 @@ To print the name and oper-status of the interfaces we use the _find-method_ and
 for intf in root.findall(".//{http://cisco.com/ns/yang/Cisco-IOS-XE-interfaces-oper}interface"):
     print(intf.find("{http://cisco.com/ns/yang/Cisco-IOS-XE-interfaces-oper}name").text)
     print(intf.find("{http://cisco.com/ns/yang/Cisco-IOS-XE-interfaces-oper}oper-status").text)
+    print()
 ```
 
 ```bash
