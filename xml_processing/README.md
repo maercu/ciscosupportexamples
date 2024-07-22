@@ -107,7 +107,7 @@ If we run the same Python script again (loading the modified XML data), we'll en
 }
 ```
 
-Do you spot the difference? Have a look at the data type of the interface value (parsed_xml["data"]["interfaces"]["interface"]): If there are multiple interfaces, like in our first example, xmltodict puts all interfaces in a list, if there is just one, the resulting value is a dict.
+Do you spot the difference? Have a look at the data type of the interface value (_parsed_xml["data"]["interfaces"]["interface"]_): If there are multiple interfaces, like in our first example, xmltodict puts all interfaces in a list, if there is just one, the resulting value is a dict.
 
 ![Diff](out_diff.png)
 
